@@ -1,70 +1,109 @@
-import { Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn Column, OneToMany, ManyToOne } from "typeorm";
-import { User } from './User';
-import { Entity as EntityModel } from './Entity';
+// /* https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/overview/tweet-object */
 
-@Entity()
-export class Tweet {
-  @PrimaryGeneratedColumn()
-  id: number;
+// import { Entity, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn, Column, ManyToOne } from "typeorm";
+// import { User } from './User';
 
-  @Column()
-  twitter_id: number;
+// import { Entity as TweetEntity, ExtendedEntity, Indice, Coordinate, Place, Geo, Permalink } from '../types/Tweet';
 
-  @Column()
-  twitter_created_at: Date;
+// @Entity()
+// export class Tweet {
+//   @Column()
+//   created_at: Date;
 
-  @Column()
-  full_text: string;
+//   @Column()
+//   id: number;
 
-  @Column({ array: true })
-  display_text_range: number[];
+//   @Column()
+//   id_str: string
 
-  @Column()
-  truncated: boolean;
+//   @Column()
+//   full_text: string;
 
-  @Column()
-  source: string;
+//   @Column()
+//   truncated: boolean;
 
-  @Column()
-  is_quote_status: boolean;
+//   @Column({ array: true })
+//   display_text_range: Indice;
 
-  @Column()
-  retweet_count: number;
+//   @Column({ type: "jsonb" })
+//   entities: TweetEntity;
 
-  @Column()
-  favorite_count: number;
+//   @Column({ type: "jsonb" })
+//   extended_entities: ExtendedEntity;
 
-  @Column()
-  favorited: boolean;
+//   @Column()
+//   source: string;
 
-  @Column()
-  retweeted: boolean;
+//   @Column({ nullable: true })
+//   in_reply_to_status_id: number;
 
-  @Column()
-  possibly_sensitive: boolean;
+//   @Column({ nullable: true })
+//   in_reply_to_status_id_str: string;
 
-  @Column()
-  lang: string
+//   @Column({ nullable: true })
+//   in_reply_to_user_id: number;
 
-  @CreateDateColumn()
-  created_date: Date;
+//   @Column({ nullable: true })
+//   in_reply_to_user_id_str: string;
 
-  @UpdateDateColumn()
-  updated_date: Date;
+//   @Column({ nullable: true })
+//   in_reply_to_screen_name: string;
 
-  @OneToMany(type => Entity, entity => entity.tweet)
-  entities: EntityModel[];
+//   @ManyToOne(type => User, user => user.tweets)
+//   user: User;
 
-  @ManyToOne(type => User, user => user.tweets)
-  user: User;
+//   /* deprecated */
+//   @Column({ nullable: true })
+//   geo: Geo;
 
-  // geo: ?
-  // coordinates: ?
-  // place: ?
-  // contributors: ?
-  // in_reply_to_status_id: ?
-  // in_reply_to_status_id_str: ?
-  // in_reply_to_user_id: ?
-  // in_reply_to_user_id_str: ?
-  // in_reply_to_screen_name: ?
-}
+//   @Column({ nullable: true })
+//   coordinates: Coordinate;
+
+//   @Column({ nullable: true })
+//   place: Place;
+
+//   /* not specified in Doc */
+//   @Column({ nullable: true })
+//   contributors: any;
+
+//   @Column()
+//   is_quote_status: boolean;
+
+//   @Column()
+//   quoted_status_id: number;
+
+//   @Column()
+//   quoted_status_id_str: string;
+
+//   @Column({ type: "jsonb" })
+//   quoted_status_permalink: Permalink;
+
+//   @Column({ type: "jsonb" })
+//   quoted_status: Tweet;
+
+//   /* specified only in Doc */
+//   @Column({ type: "jsonb", nullable: true })
+//   retweeted_status: Tweet;
+
+//   /* specified only in Doc */
+//   @Column({ type: "jsonb", nullable: true })
+//   filter_level: 'none' | 'low' | 'medium' | null;
+
+//   @Column()
+//   retweet_count: number;
+
+//   @Column({ nullable: true })
+//   favorite_count: number;
+
+//   @Column({ nullable: true })
+//   favorited: boolean;
+
+//   @Column({ nullable: true })
+//   retweeted: boolean;
+
+//   @Column({ nullable: true })
+//   possibly_sensitive: boolean;
+
+//   @Column({ nullable: true })
+//   lang: string;
+// }

@@ -2,9 +2,11 @@
   "type": "postgres",
   "host": "localhost",
   "port": 5432,
-  "database": "twitter-archive",
+  "database": "twitter_archive_development",
+  "username": "dev",
+  "password": "dev",
   "synchronize": true,
-  "logging": true,
+  "logging": false,
   "entities": ["src/entities/**/*.ts"],
   "cli": {
     "entitiesDir": "src/entities",
