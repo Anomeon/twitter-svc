@@ -1,8 +1,11 @@
-
 import axios, { Method } from 'axios';
-import _ from 'lodash';
 import qs from 'qs';
-import { getNonce, getSignature, getSigningKey, getBaseString } from '../utils/oauth';
+import {
+  getNonce,
+  getSignature,
+  getSigningKey,
+  getBaseString,
+} from '../utils/oauth';
 import { RawTweet } from '../entities/RawTweet';
 import { logger } from '../../logger';
 import {
@@ -11,30 +14,26 @@ import {
   OAUTH_ACCESS_TOKEN,
   OAUTH_ACCESS_SECRET,
 } from '../config';
+import { Connection } from 'typeorm';
+import { Tweet } from '../types/Tweet';
+import { OAuthParams } from '../utils/oauth';
 
-type OAuthParams = {
-  oauth_consumer_key: string,
-  oauth_token: string,
-  oauth_signature_method: string,
-  oauth_version: string,
-  oauth_timestamp: number,
-  oauth_nonce: string,
-  oauth_signature?: string,
-};
-
-const paramsSerializer = params => qs.stringify(params, { arrayFormat: 'comma' });
+const paramsSerializer = (params: unknown) =>
+  qs.stringify(params, { arrayFormat: 'comma' });
 
 export class TweetService {
-  connection
-  constructor(connection) {
+  constructor(public connection: Connection) {
     this.connection = connection;
   }
 
-  saveTweetsByIds = async ids => {
+  async saveTweetsByIds(ids: string | string[]): Promise<void> {
     const method: Method = 'GET';
     const url = 'https://api.twitter.com/1.1/statuses/lookup.json';
     const params = { id: ids, ...this.getAuthParams() };
-    const signingKey = getSigningKey(OAUTH_CONSUMER_SECRET, OAUTH_ACCESS_SECRET);
+    const signingKey = getSigningKey(
+      OAUTH_CONSUMER_SECRET,
+      OAUTH_ACCESS_SECRET,
+    );
     const baseString = getBaseString(method, url, params);
     const signature = getSignature(signingKey, baseString);
 
@@ -46,11 +45,11 @@ export class TweetService {
         oauth_signature: signature,
       },
       paramsSerializer,
-    }
+    };
 
     const rawTweetRepository = this.connection.getRepository(RawTweet);
 
-    let data;
+    let data: Tweet[];
 
     try {
       ({ data } = await axios(requestOptions));
@@ -59,14 +58,14 @@ export class TweetService {
     }
 
     if (data) {
-      const preparedData = data.map(rawTweet => ({
+      const preparedData = data.map((rawTweet) => ({
         id: rawTweet.id_str,
         data: rawTweet,
       }));
 
       try {
         const entities = await rawTweetRepository.save(preparedData);
-        logger.info(entities.map(entity => entity.id));
+        logger.info(entities.map((entity) => entity.id));
       } catch (error) {
         logger.error(error);
       }
@@ -83,4 +82,4 @@ export class TweetService {
       oauth_nonce: getNonce(),
     };
   }
-};
+}

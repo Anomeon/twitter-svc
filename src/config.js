@@ -1,4 +1,5 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
+
 dotenv.config();
 
 const {
@@ -11,9 +12,9 @@ const {
   OAUTH_CONSUMER_SECRET,
   OAUTH_ACCESS_TOKEN,
   OAUTH_ACCESS_SECRET,
-} = process.env
+} = process.env;
 
-module.exports = {
+export {
   DB_USER,
   DB_PASS,
   DB_HOST,

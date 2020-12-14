@@ -98,7 +98,7 @@
 //   @Column({ nullable: true })
 //   favorited: boolean;
 
-//   @Column({ nullable: true })
+//   @Column()
 //   retweeted: boolean;
 
 //   @Column({ nullable: true })
