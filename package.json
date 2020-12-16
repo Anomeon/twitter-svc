@@ -7,7 +7,8 @@
     "start": "nodemon",
     "db:create": "node src/tasks/dbcreate.js",
     "typeorm": "node --require ts-node/register ./node_modules/typeorm/cli.js",
-    "test": "jest"
+    "test": "jest",
+    "tsc": "tsc"
   },
   "husky": {
     "hooks": {

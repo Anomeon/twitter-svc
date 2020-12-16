@@ -49,7 +49,7 @@ export class TweetService {
 
     const rawTweetRepository = this.connection.getRepository(RawTweet);
 
-    let data: Tweet[];
+    let data: Tweet[] | undefined;
 
     try {
       ({ data } = await axios(requestOptions));
