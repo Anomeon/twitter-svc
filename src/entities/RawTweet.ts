@@ -1,10 +1,11 @@
-import { Entity, Column, PrimaryColumn } from "typeorm";
+import { Entity, Column, PrimaryColumn } from 'typeorm';
+import { Tweet } from '../types/Tweet';
 
 @Entity('raw_tweets')
 export class RawTweet {
   @PrimaryColumn()
-  id: string;
+  id!: string;
 
-  @Column({ type: "jsonb" })
-  data: any;
+  @Column({ type: 'jsonb' })
+  data!: Tweet;
 }
