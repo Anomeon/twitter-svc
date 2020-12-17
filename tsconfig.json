@@ -2,13 +2,19 @@
   "compilerOptions": {
     "outDir": "./dist",
     "allowJs": true,
-    "checkJs": true,
     "target": "es5",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
+
+    "checkJs": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "alwaysStrict": true,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
   },
   "include": [
     "./src/**/*"
