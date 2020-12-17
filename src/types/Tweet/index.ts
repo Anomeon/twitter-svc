@@ -103,16 +103,10 @@ export type Place = {
 
 export type Geo = [Latitude, Longitude];
 
-export type Permalink = {
-  url: string;
-  expanded: string;
-  display: string;
-};
+export type Permalink = { url: string; expanded: string; display: string };
 
 // TODO
-type User = {
-  name: string;
-};
+type User = { name: string };
 
 // https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/overview/tweet-object
 export type Tweet = {
