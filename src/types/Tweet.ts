@@ -1,6 +1,8 @@
-/* Common types */
+import { TweetIndice } from './TweetIndice';
+import { TweetUser } from './TweetUser';
+import { TweetUrl } from './TweetUrl';
 
-export type Indice = [number, number];
+/* Common types */
 
 export type Longitude = number;
 export type Latitude = number;
@@ -29,12 +31,12 @@ export type Size = {
 
 export type Hashtag = {
   text: string;
-  indices: Indice;
+  indices: TweetIndice;
 };
 
 export type Symbol = {
   text: string;
-  indices: Indice;
+  indices: TweetIndice;
 };
 
 export type UserMention = {
@@ -42,13 +44,13 @@ export type UserMention = {
   name: string;
   id: number;
   id_str: string;
-  indices: Indice;
+  indices: TweetIndice;
 };
 
 export type Media = {
   id: number;
   is_str: string;
-  indices: Indice;
+  indices: TweetIndice;
   media_url: string;
   media_url_https: string;
   url: string;
@@ -58,20 +60,13 @@ export type Media = {
   sizes: Size;
 };
 
-export type Url = {
-  url: string;
-  expanded_url: string;
-  display_url: string;
-  indices: Indice;
-};
-
 /* Tweet types */
 
 export type Entity = {
   hashtags: Hashtag[];
   symbols: symbol[];
   user_mentions: UserMention[];
-  urls: Url[];
+  urls: TweetUrl[];
   media: Media[];
 };
 
@@ -105,16 +100,14 @@ export type Geo = [Latitude, Longitude];
 
 export type Permalink = { url: string; expanded: string; display: string };
 
-// TODO
-type User = { name: string };
-
 // https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/overview/tweet-object
+
 export type Tweet = {
   id: number;
   geo: Geo | null;
   lang: string | null;
   text: string;
-  user: User;
+  user: TweetUser;
   place: Place | null;
   id_str: string;
   source: string;

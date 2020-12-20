@@ -18,6 +18,7 @@ import { Connection } from 'typeorm';
 import { Tweet } from '../types/Tweet';
 import { OAuthParams } from '../utils/oauth';
 
+// TODO: common thing
 const paramsSerializer = (params: unknown) =>
   qs.stringify(params, { arrayFormat: 'comma' });
 
