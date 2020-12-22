@@ -100,8 +100,7 @@ export type Geo = [Latitude, Longitude];
 
 export type Permalink = { url: string; expanded: string; display: string };
 
-// https://developer.twitter.com/en/docs/twitter-api/v1/data-dictionary/overview/tweet-object
-
+/* Types based on imported data, cause official documentation has divergency with reality */
 export type Tweet = {
   id: number;
   geo: Geo | null;
@@ -112,14 +111,14 @@ export type Tweet = {
   id_str: string;
   source: string;
   entities: Entity;
-  favorited: boolean | null;
+  favorited: boolean;
   retweeted: boolean;
   truncated: boolean;
   created_at: Date;
   coordinates: Coordinate | null;
   contributors: null;
   retweet_count: number;
-  favorite_count: number | null;
+  favorite_count: number;
   is_quote_status: boolean;
   in_reply_to_user_id: number | null;
   in_reply_to_status_id: number | null;

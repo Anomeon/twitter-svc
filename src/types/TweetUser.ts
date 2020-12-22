@@ -11,22 +11,18 @@ export type TweetUserEntities = {
   description: Description[];
 };
 
+/* Types based on imported data, cause official documentation has divergency with reality */
 export type TweetUser = {
   id: number;
   id_str: string;
   name: string;
-  url: string;
-  lang: string | null;
+  url: string | null;
   entities: TweetUserEntities;
-  location: string;
+  location: string | null;
   verified: boolean;
-  following: boolean;
   protected: boolean;
-  time_zone: null;
   created_at: Date;
-  utc_offset: null;
   description: string;
-  geo_enabled: boolean;
   screen_name: string;
   listed_count: number;
   friends_count: number;
@@ -37,21 +33,26 @@ export type TweetUser = {
   followers_count: number;
   translator_type: string;
   favourites_count: number;
+  utc_offset: null;
+  time_zone: null;
+  lang: null;
+  geo_enabled: boolean;
+  following: boolean;
+  follow_request_sent: boolean;
+  has_extended_profile: boolean;
   profile_image_url: string;
-  profile_banner_url: string;
+  profile_banner_url: string | null;
   profile_link_color: string;
   profile_text_color: string;
-  follow_request_sent: boolean;
   contributors_enabled: boolean;
-  has_extended_profile: boolean;
   default_profile_image: boolean;
   is_translation_enabled: boolean;
   profile_background_tile: boolean;
   profile_image_url_https: string;
   profile_background_color: string;
   profile_sidebar_fill_color: string;
-  profile_background_image_url: string;
+  profile_background_image_url: string | null;
   profile_sidebar_border_color: string;
   profile_use_background_image: boolean;
-  profile_background_image_url_https: string;
+  profile_background_image_url_https: string | null;
 };
