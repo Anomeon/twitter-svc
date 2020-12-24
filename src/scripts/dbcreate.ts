@@ -1,5 +1,6 @@
 import { Pool } from 'pg';
 import { DB_USER, DB_PASS, DB_HOST, DB_PORT, DB_NAME } from '../config.js';
+import { logger } from '../../logger';
 
 const pool = new Pool({
   user: DB_USER,
@@ -9,11 +10,11 @@ const pool = new Pool({
   database: 'template1',
 });
 
-pool.query('CREATE DATABASE ' + DB_NAME, (err) => {
-  if (err) {
-    console.log(err);
-  } else {
-    console.log(`Database ${DB_NAME} created`);
+pool.query('CREATE DATABASE ' + DB_NAME, (error) => {
+  if (error) {
+    logger.error(error);
+    return;
   }
+  logger.info(`Database ${DB_NAME} created`);
   pool.end();
 });
