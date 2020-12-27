@@ -1,6 +1,6 @@
 import { getConnection } from 'typeorm';
 import { buildSchema } from 'graphql';
-import { RawTweet } from '../entities/RawTweet';
+import { RawTweet } from '@entities/RawTweet';
 import { Tweet } from '../types/Tweet';
 
 export const graphqlSchema = buildSchema(`

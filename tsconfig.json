@@ -6,7 +6,6 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-
     "checkJs": true,
     "noImplicitAny": true,
     "strictNullChecks": true,
@@ -15,8 +14,15 @@
     "strictFunctionTypes": true,
     "strictPropertyInitialization": true,
     "noImplicitThis": true,
+    "baseUrl": "src",
+    "paths": {
+      "@entities/*": ["entities/*"],
+      "@types/*": ["types/*"]
+    },
+    "typeRoots": [
+      "./src/types",
+      "node_modules/@types"
+    ]
   },
-  "include": [
-    "./src/**/*"
-  ]
+  "include": ["./src/**/*"]
 }

@@ -1,3 +1,6 @@
+import aliashq from 'alias-hq';
+aliashq.get('module-alias');
+
 import { logger } from '../logger';
 
 import express from 'express';
